@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+.vend-sans {
+  font-family: "Vend Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /* 300 / 400 / 500 / 600 / 700 */
+  font-style: normal;
+}
