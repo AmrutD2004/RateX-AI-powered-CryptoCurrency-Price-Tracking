@@ -1,6 +1,6 @@
 **RateX-AI-powered-CryptoCurrency-Price-Tracking**
 
-****This project is a modern cryptocurrency price tracking web application built with React JS and powered by the CoinGecko API. It delivers real-time market data with clean UI components, interactive charts, and user-friendly navigation.**
+This project is a modern cryptocurrency price tracking web application built with React JS and powered by the CoinGecko API. It delivers real-time market data with clean UI components, interactive charts, and user-friendly navigation.
 **
 **In addition to core tracking features, the app includes:**
 1. AI Insights — smart news summaries & meaningful crypto insights
