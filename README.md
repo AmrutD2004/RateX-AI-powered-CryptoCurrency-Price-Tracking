@@ -9,13 +9,23 @@ This project is a modern cryptocurrency price tracking web application built wit
 4. Responsive UI — optimized for all screen sizes
 
 
+
+
+
 **🚀 Features**
 
 📈 Live price updates with real-time market data
+
 📊 Interactive line charts for price history
+
 🔍 Crypto search with instant filtering
+
 🧠 AI Insights page for news-style summaries
+
 🤖 AI Chatbot support for in-app assistance
+
 💱 Multi-currency support (USD, INR, EUR)
+
 🎨 Clean & modern UI with TailwindCSS
+
 🔐 User authentication system (Register/Login)
