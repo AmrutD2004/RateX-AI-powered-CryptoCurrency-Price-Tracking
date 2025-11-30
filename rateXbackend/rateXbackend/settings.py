@@ -15,7 +15,6 @@ import os
 from dotenv import load_dotenv
 from urllib.parse import urlparse, parse_qsl
 from datetime import timedelta
-import dj_database_url
 
 load_dotenv()
 
