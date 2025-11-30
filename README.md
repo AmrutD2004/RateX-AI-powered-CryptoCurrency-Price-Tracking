@@ -30,4 +30,4 @@ This project is a modern cryptocurrency price tracking web application built wit
 
 🔐 User authentication system (Register/Login)
 
-Visit:- https://ratex-awc1.onrender.com/
+Visit:- https://ratexx.onrender.com/
