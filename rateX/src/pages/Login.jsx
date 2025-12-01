@@ -2,6 +2,8 @@ import { Eye, Loader2, EyeOff } from 'lucide-react'
 import React, { useState } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
+import { GoogleLogin } from '@react-oauth/google'
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -80,6 +82,21 @@ const Login = () => {
                         <button type='submit' className='w-full mt-5 px-2 py-2 bg-[#3A2F3B] text-lg text-white rounded-lg border border-neutral-300 cursor-pointer'>Login</button>
                     )}
                 </form>
+
+                <p className='flex items-center justify-center m-3'>or</p>
+                <div className='flex items-center justify-center w-full'>
+                    <GoogleLogin onSuccess={(credentialResponse)=>{
+                        const decoded = jwtDecode(credentialResponse.credential)
+                        localStorage.setItem('googleUsername', decoded.given_name)
+                        toast.success('Login Successfull')
+                        setTimeout(()=>{
+                            navigate('/')
+                        },2000)
+                        
+                    }}
+                    onError={()=>toast.error("Google login failed")} />
+                </div>
+                
                 <div className="text-center text-sm text-neutral-600 mt-6 flex items-center justify-center gap-1">
           Dont't have account?<Link to='/register' className='text-[#3A2F3B] font-semibold hover:underline'>Register</Link>
         </div>
