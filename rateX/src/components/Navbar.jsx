@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom'
 import { ArrowUpRight, Menu, X, ChevronDown, ChevronUp, LogOut, Sparkles } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast';
+import { googleLogout } from '@react-oauth/google'
 
 const Navbar = ({ currency, setCurrency, coinData }) => {
 
+  const googleUserName = localStorage.getItem('googleUsername')
   const navLinks = [
     {
       link: 'Home',
@@ -29,7 +31,6 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
 
   const userID = localStorage.getItem('userID')
   const userName = localStorage.getItem('userName')
-  const googleUserName = localStorage.getItem('googleUsername')
 
   const [dropDown, setDropDown] = useState(false)
 
@@ -58,13 +59,12 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
 
     localStorage.removeItem('userID')
     localStorage.removeItem('userName')
-    googleLogout()
-    localStorage.removeItem('googleUsername')
     setTimeout(() => {
       toast.success("Logged out successfully")
       navigate('/login')
     }, 2000)
-    
+    googleLogout()
+    localStorage.removeItem('googleUsername')
   }
 
   return (
@@ -162,7 +162,7 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
             </>
           ) : (
 
-            <button onClick={()=>navigate('/register'} className="flex items-center gap-1 text-lg font-medium text-white bg-[#3A2F3B] px-4 py-2 rounded-lg">
+            <button onClick={()=>navigate('register')} className="flex items-center gap-1 text-lg font-medium text-white bg-[#3A2F3B] px-4 py-2 rounded-lg">
               Sign up <ArrowUpRight size={18} />
             </button>
 
