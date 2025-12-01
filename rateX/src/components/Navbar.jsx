@@ -29,6 +29,7 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
 
   const userID = localStorage.getItem('userID')
   const userName = localStorage.getItem('userName')
+  const googleUserName = localStorage.getItem('googleUsername')
 
   const [dropDown, setDropDown] = useState(false)
 
@@ -57,10 +58,13 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
 
     localStorage.removeItem('userID')
     localStorage.removeItem('userName')
+    googleLogout()
+    localStorage.removeItem('googleUsername')
     setTimeout(() => {
       toast.success("Logged out successfully")
       navigate('/login')
     }, 2000)
+    
   }
 
   return (
@@ -97,9 +101,9 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
             <option value="eur">EUR</option>
           </select>
 
-          {userID ? (
+          {userID || googleUserName (
             <div className='flex items-center gap-2 flex-col relative'>
-              <span className='text-lg font-medium font-mono text-[#3A2F3B] flex items-center gap-2'>Hi!,{userName}<button onClick={() => setDropDown(!dropDown)}>
+              <span className='text-lg font-medium font-mono text-[#3A2F3B] flex items-center gap-2'>Hi!,{userName || googleUserName}<button onClick={() => setDropDown(!dropDown)}>
                 {dropDown ? (
                   <ChevronUp />
                 ) : (
@@ -151,7 +155,7 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
             <option>EUR</option>
           </select>
 
-          {userID ? (
+          {userID || googleUserName ? (
             <>
               <button onClick={handleLogout} className='text-white flex items-center px-3 py-2 rounded-lg border border-neutral-300 gap-1 cursor-pointer bg-red-500 transition-colors duration-200'><LogOut size={18} />Logout</button>
               <Link to='/aiInsights' className='flex items-center text-[#3A2F3B] text-sm font-medium font-mono gap-1  bg-yellow-400 px-3 py-2 border border-neutral-300 rounded-lg'><Sparkles size={18} />AI Insights</Link>
