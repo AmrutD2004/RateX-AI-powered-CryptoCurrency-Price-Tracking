@@ -55,10 +55,10 @@ const Login = () => {
             <div className='max-w-md bg-linear-to-tl from-[#FFEDD4] via-[#F7F3F1] to-[#FFEDD4] rounded-2xl shadow-xl p-8'>
                 <div className="text-center mb-8">
                     <h1 className="text-3xl font-bold font-mono text-neutral-800">
-                        Create Your Account
+                        Login to Your Account
                     </h1>
                     <p className="text-neutral-500 text-sm mt-2 font-mono">
-                        Join RateX to get Cryptocurrency Info.
+                        Login RateX to get Cryptocurrency Info.
                     </p>
                 </div>
                 <form onSubmit={handleSubmit} className='flex flex-col items-start'>
