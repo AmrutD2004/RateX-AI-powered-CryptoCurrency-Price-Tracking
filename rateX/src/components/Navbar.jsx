@@ -101,7 +101,7 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
             <option value="eur">EUR</option>
           </select>
 
-          {userID || googleUserName (
+          {userID || googleUserName ? (
             <div className='flex items-center gap-2 flex-col relative'>
               <span className='text-lg font-medium font-mono text-[#3A2F3B] flex items-center gap-2'>Hi!,{userName || googleUserName}<button onClick={() => setDropDown(!dropDown)}>
                 {dropDown ? (
