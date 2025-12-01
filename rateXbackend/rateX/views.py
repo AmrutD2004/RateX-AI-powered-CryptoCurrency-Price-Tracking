@@ -5,7 +5,19 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import *
+from rest_framework_simplejwt.tokens import RefreshToken
 # Create your views here.
+
+
+# Generate manual JWT token
+def get_tokens_for_user(user):
+    refresh = RefreshToken.for_user(user)
+
+    return {
+        'refresh': str(refresh),
+        'access': str(refresh.access_token),
+    }
+
 
 
 @api_view(['POST'])
@@ -14,8 +26,9 @@ def user_register(request):
     user1 = User.objects.filter(email=email)
     user = UserSerializers(data = request.data)
     if user.is_valid():
-        user.save()
-        return Response({'message':'Register Successfull'},status=200)
+        new_user=user.save()
+        token = get_tokens_for_user(new_user)
+        return Response({'message':'Register Successfull', "token":token},status=200)
     elif user1:
         return Response({'message':'User already register'},status=400)
     else:
@@ -28,6 +41,7 @@ def user_login(request):
 
     try:
         user = User.objects.get(email=email, password=password)
-        return Response({'message':'Login Successfull', 'userID':user.id, 'userName':user.userName},status=200)
+        token = get_tokens_for_user(user)
+        return Response({'message':'Login Successfull', 'userID':user.id, 'userName':user.userName, 'token':token},status=200)
     except:
         return Response({'message':'Invalid Credentilas'},status=400)
