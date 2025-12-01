@@ -162,7 +162,7 @@ const Navbar = ({ currency, setCurrency, coinData }) => {
             </>
           ) : (
 
-            <button className="flex items-center gap-1 text-lg font-medium text-white bg-[#3A2F3B] px-4 py-2 rounded-lg">
+            <button onClick={()=>navigate('/register'} className="flex items-center gap-1 text-lg font-medium text-white bg-[#3A2F3B] px-4 py-2 rounded-lg">
               Sign up <ArrowUpRight size={18} />
             </button>
 
