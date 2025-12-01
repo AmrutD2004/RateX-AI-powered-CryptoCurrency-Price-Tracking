@@ -6,6 +6,7 @@ from rest_framework import status
 from django.views.decorators.csrf import csrf_exempt
 from .serializers import *
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth import authenticate
 # Create your views here.
 
 
@@ -40,7 +41,7 @@ def user_login(request):
     password = request.data.get('password')
 
     try:
-        user = User.objects.get(email=email, password=password)
+        user = authenticate(request, email=email, password=password)
         token = get_tokens_for_user(user)
         return Response({'message':'Login Successfull', 'userID':user.id, 'userName':user.userName, 'token':token},status=200)
     except:
