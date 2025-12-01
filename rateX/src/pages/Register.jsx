@@ -2,6 +2,7 @@ import { Eye, Loader2, EyeOff } from 'lucide-react'
 import React, { useState } from 'react'
 import { toast, Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { GoogleLogin } from '@react-oauth/google'
 
 const Register = () => {
   const [formData, setFormdata] = useState({
@@ -77,6 +78,23 @@ const Register = () => {
             <button type='submit' className='w-full mt-5 px-2 py-2 bg-[#3A2F3B] text-lg text-white rounded-lg border border-neutral-300 cursor-pointer'>Register</button>
           )}
         </form>
+
+        <p className='flex items-center justify-center m-3'>or</p>
+
+        <div className='flex items-center justify-center w-full'>
+          <GoogleLogin onSuccess={(credentialResponse) => {
+            console.log(credentialResponse)
+            console.log(jwtDecode(credentialResponse.credential))
+            const decoded = jwtDecode(credentialResponse.credential)
+            localStorage.setItem('googleUsername', decoded.given_name)
+            toast.success('Registration Successfull')
+            setTimeout(()=>{
+              navigate('/')
+            },2000)
+            
+          }}
+            onError={() => toast.error("Google registration failed")} />
+        </div>
         <div className="text-center text-sm text-neutral-600 mt-6 flex items-center justify-center gap-1">
           Already have an account?<Link to='/login' className='text-[#3A2F3B] font-semibold hover:underline'>Login</Link>
         </div>
