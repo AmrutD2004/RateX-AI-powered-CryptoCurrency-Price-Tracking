@@ -24,7 +24,7 @@ const Register = () => {
     e.preventDefault()
     setLoading(true)
     try {
-      const response = await fetch('https://ratexbackend.onrender.com/api/register/', {
+      const response = await fetch('https://ratex-ai-powered-cryptocurrency-price-ase2.onrender.com/api/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
