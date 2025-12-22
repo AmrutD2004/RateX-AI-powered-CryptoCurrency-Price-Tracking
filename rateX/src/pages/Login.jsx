@@ -25,7 +25,7 @@ const Login = () => {
         e.preventDefault()
         setLoading(true)
         try {
-            const response = await fetch('https://ratexbackend.onrender.com/api/login/', {
+            const response = await fetch('https://ratex-ai-powered-cryptocurrency-price-ase2.onrender.com/api/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
